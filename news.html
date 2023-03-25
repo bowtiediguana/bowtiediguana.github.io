@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto News</title>
+    <style>
+        body {
+            background-color: black;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            white-space: normal;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        #content {
+            flex-grow: 1;
+            overflow: hidden;
+        }
+        .headline {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: red;
+        }
+        .body {
+            color: lightgray;
+        }
+        .a {
+            color: cyan;
+        }
+        #status-bar {
+            background-color: black;
+            color: lime;
+            padding: 0.5em;
+            font-size: 0.8em;
+        }
+        .connection-status {
+            color: red;
+        }
+    .news-table {
+        width: 100%;
+        border-collapse: collapse;
+        color: white;
+    }
+    .news-table td {
+        padding: 0.2em;
+    }
+    .timestamp {
+        color: white;
+        white-space: nowrap;
+    }
+    </style>
+</head>
+<body>
+    <div id="content">
+
+    </div>
+    <div id="status-bar">
+        Connection: <span id="connection-status" class="connection-status">Disconnected</span>
+    </div>
+    <script>
+        const websocketUrl = 'wss://news.treeofalpha.com/ws'; // Powered by Tree of Alpha's public news feed, a cool dude
+        const contentElement = document.getElementById('content');
+        const connectionStatusElement = document.getElementById('connection-status');
+        const scrollDelay = 100; // milliseconds
+
+        function connectWebSocket() {
+            const socket = new WebSocket(websocketUrl);
+
+            socket.addEventListener('open', () => {
+                connectionStatusElement.innerText = 'Connected';
+                connectionStatusElement.style.color = 'lime';
+                connectionStatusElement.innerHTML = 'Connected! | Shameless Reflink Plug: <a href="https://partner.bybit.com/b/BowTiedIguana">partner.bybit.com/b/BowTiedIguana</a>';
+            });
+
+            socket.addEventListener('message', (event) => {
+    console.log('Received JSON data:', event.data);
+    const json = JSON.parse(event.data);
+
+    if (json.title) {
+        const currentTime = new Date();
+        const timestamp = currentTime.toLocaleString('en-US', {
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: true,
+        });
+
+        const output = `
+            <table class="news-table">
+                <tr>
+                    <td class="timestamp">${timestamp}</td>
+                    <td class="headline">${json.body.toUpperCase()}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td class="body">${json.title.toUpperCase()} URL: <a href="${json.link}" target="_blank">${json.link}</a></td>
+                </tr>
+            </table>
+        `;
+
+        const newsContainer = document.getElementById('content');
+        newsContainer.innerHTML += output;
+    }
+});
+
+
+            socket.addEventListener('close', () => {
+                connectionStatusElement.innerText = 'Disconnected';
+                connectionStatusElement.style.color = 'red';
+                console.warn('WebSocket connection closed. Reconnecting in 5 seconds...');
+                setTimeout(() => {
+                    connectWebSocket();
+                }, 5000);
+            });
+
+            socket.addEventListener('error', (error) => {
+                console.error('WebSocket error:', error);
+            });
+        }
+
+        connectWebSocket();
+    </script>
+
+</body>
+</html>

@@ -24,19 +24,29 @@
         .headline {
             font-size: 1.5em;
             font-weight: bold;
-            color: red;
+            color: #f5475b;
         }
         .body {
             color: lightgray;
         }
         .a {
             color: cyan;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
         }
         #status-bar {
             background-color: black;
             color: lime;
             padding: 0.5em;
             font-size: 0.8em;
+        }
+        #status-bar a {
+            color: cyan;
+        }
+        #status-bar strong {
+            color: gold;
         }
         .connection-status {
             color: red;
@@ -74,7 +84,7 @@
             socket.addEventListener('open', () => {
                 connectionStatusElement.innerText = 'Connected';
                 connectionStatusElement.style.color = 'lime';
-                connectionStatusElement.innerHTML = 'Connected! | Shameless Reflink Plug: <a href="https://partner.bybit.com/b/BowTiedIguana">partner.bybit.com/b/BowTiedIguana</a>';
+                connectionStatusElement.innerHTML = 'Connected! | <strong>@BowTiedIguana - Visit the DeFi Education <a href="https://defieducation.substack.com"> Substack</a> <strong> | ByBit Reflink </strong><a href="https://partner.bybit.com/b/BowTiedIguana">partner.bybit.com/b/BowTiedIguana</a> ';
             });
 
             socket.addEventListener('message', (event) => {

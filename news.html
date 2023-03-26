@@ -67,7 +67,18 @@
 </head>
 <body>
     <div id="content">
-
+        <div id="placeholder">
+            <table class="news-table">
+                <tr>
+                    <td class="timestamp"></td>
+                    <td class="headline">NEWS HEADLINES WILL APPEAR HERE IN REAL TIME</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td class="body">Sources</td>
+                </tr>
+            </table>
+        </div>
     </div>
     <div id="status-bar">
         Connection: <span id="connection-status" class="connection-status">Disconnected</span>
@@ -114,7 +125,14 @@
         `;
 
         const newsContainer = document.getElementById('content');
-        newsContainer.innerHTML += output;
+        
+        const placeholder = document.getElementById('placeholder');
+
+            if (placeholder) {
+                placeholder.remove();
+            }
+
+            newsContainer.insertAdjacentHTML('afterbegin', output);
     }
 });
 

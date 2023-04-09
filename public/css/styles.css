@@ -1,27 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Define the main container */
 body {
   font-family: Arial, sans-serif;
   font-size: 16px;
-  line-height: 1.6;
-  background-color: #0074d9;
-  background-image: url("https://live.staticflickr.com/65535/51514102640_7c42272c28_k.jpg");
+  /* line-height: 1.6rem !important; */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
+  @apply bg-background md:text-justify;
+  /* @apply leading-[1.6rem] !important; */
+}
+
+p {
+  @apply my-4 leading-[1.6rem] text-sm sm:text-base sm:leading-[1.6rem];
+}
+
+a {
+  @apply text-blue-700 underline;
+}
+
+h2 {
+  font-size: 24px;
+  margin-top: 0;
+  margin-bottom: 20px;
+  @apply text-primary font-semibold;
 }
 
 /* Define the page header */
 #header {
   text-align: center;
   padding: 50px 0;
-  background-color: #003399;
-  color: #fff;
+  @apply bg-primary text-white;
 }
 
 #header h1 {
   font-size: 36px;
-  margin: 0;
-  text-shadow: 2px 2px #000;
+  text-shadow: 1px 1px #000;
+  @apply m-0 px-4;
+}
+
+.section {
+  @apply mb-8;
 }
 
 /* Define the social media icons */
@@ -33,76 +55,52 @@ body {
 
 .social a {
   margin-right: 10px;
-  color: #fff;
   text-decoration: none;
   font-size: 24px;
+  @apply text-white;
 }
 
 .social a:hover {
-  color: #fff;
+  @apply text-lightGray;
 }
 
 /* Define the page content */
 #content {
-  max-width: 800px;
   margin: 0 auto;
-  padding: 50px;
-  background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
-}
-
-/* Define the biography section */
-#bio {
-  text-align: justify;
-  margin-bottom: 50px;
-}
-
-#bio h2 {
-  font-size: 24px;
-  margin-top: 0;
-  margin-bottom: 20px;
-  color: #003399;
+  @apply p-6 sm:p-8 md:p-12 my-0 md:my-4 max-w-3xl bg-white md:rounded-xl;
 }
 
 /* Define the projects section */
-#projects {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+.projects {
+  @apply grid grid-cols-1 xs:grid-cols-2 gap-5 sm:gap-10 mb-10 justify-between;
 }
 
 /* Define the project links */
 .project {
-  flex-basis: calc(33.33% - 20px);
-  margin-bottom: 40px;
-  background-color: #fff;
   padding: 20px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
   text-align: center;
   text-decoration: none;
   color: #333;
+  @apply bg-white max-w-xs mx-auto rounded-lg;
 }
 .project:hover {
-  background-color: #f8f8f8;
+  @apply bg-[#f8f8f8];
 }
 
 .project h3 {
   font-size: 20px;
   margin-top: 0;
   margin-bottom: 10px;
-  color: #003399;
+  @apply text-primary;
 }
 
 .project p {
-  margin-bottom: 0;
+  @apply mb-0;
 }
 
-.project img {
-  max-width: 100%;
-  height: auto;
-  margin-bottom: 10px;
+.projects .project img {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
+  @apply mb-5 rounded-lg;
 }

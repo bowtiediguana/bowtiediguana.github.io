@@ -1,0 +1,108 @@
+/* Define the main container */
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  background-color: #0074d9;
+  background-image: url("https://live.staticflickr.com/65535/51514102640_7c42272c28_k.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+/* Define the page header */
+#header {
+  text-align: center;
+  padding: 50px 0;
+  background-color: #003399;
+  color: #fff;
+}
+
+#header h1 {
+  font-size: 36px;
+  margin: 0;
+  text-shadow: 2px 2px #000;
+}
+
+/* Define the social media icons */
+.social {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.social a {
+  margin-right: 10px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 24px;
+}
+
+.social a:hover {
+  color: #fff;
+}
+
+/* Define the page content */
+#content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 50px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+/* Define the biography section */
+#bio {
+  text-align: justify;
+  margin-bottom: 50px;
+}
+
+#bio h2 {
+  font-size: 24px;
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #003399;
+}
+
+/* Define the projects section */
+#projects {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* Define the project links */
+.project {
+  flex-basis: calc(33.33% - 20px);
+  margin-bottom: 40px;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+}
+.project:hover {
+  background-color: #f8f8f8;
+}
+
+.project h3 {
+  font-size: 20px;
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #003399;
+}
+
+.project p {
+  margin-bottom: 0;
+}
+
+.project img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
